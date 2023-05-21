@@ -7,7 +7,6 @@ const Todo = () => {
   // hooks
   const [adder, setAdder] = useState('');
   const [items, setItems] = useState([]);
-  const [error, setError] = useState(null);
 
   // Manejadores
   const handlerChange = (event) => {
