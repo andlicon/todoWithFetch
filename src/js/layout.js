@@ -21,7 +21,7 @@ const Layout = () => {
           </Routes>
           {
             // throwing an alert
-            alert && <Alert message='an alert' type={true} />
+            alert && <Alert message={alert.message} type={alert.type} />
           }
         </ScrollToTop>
       </BrowserRouter>
