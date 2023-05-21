@@ -1,0 +1,108 @@
+.todo {
+  /* caja */
+  width: 100%;
+  border: 1px solid lightgray;
+  box-shadow: 0px 0px 3px grey;
+  /* posicion */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+  z-index: 10;
+  /* estilo */
+  background-color: white;
+}
+
+.todo::after {
+  content: '';
+  /* caja */
+  width: 98%;
+  height: 7px;
+  border: 1px solid lightgray;
+  box-shadow: 0px 0px 5px lightgray;
+  /* posicion */
+  position: absolute;
+  bottom: -14px;
+  left: 1%;
+  z-index: 5;
+  /* estilo */
+  background-color: white;
+}
+
+.todo::before {
+  content: '';
+  /* caja */
+  width: 99%;
+  height: 7px;
+  border: 1px solid lightgray;
+  box-shadow: 0px 0px 5px lightgray;
+  /* posicion */
+  position: absolute;
+  bottom: -8px;
+  left: 0.5%;
+  z-index: 4;
+  /* estilo */
+  background-color: white;
+}
+
+.todo__status {
+  /* caja */
+  width: 100%;
+  padding: 0.5em 1em;
+  /* posicion */
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  /* estilos */
+  color: grey;
+}
+
+.status {
+  margin-bottom: 0;
+}
+
+.todo__item {
+  /* caja */
+  width: 100%;
+  height: 3em;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  padding: 0px 2em;
+}
+
+.todo__adder {
+  padding: 0 2em;
+  position: relative;
+}
+
+.todo__adder::after {
+  content: '';
+  /* caja */
+  width: 100%;
+  /* posicion */
+  position: absolute;
+  bottom: 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+.todo__input {
+  width: 100%;
+  padding: 0;
+  font-size: 2em;
+}
+
+.todo__input:focus {
+  /* caja */
+  outline: none;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+}
+
+.todo__body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}

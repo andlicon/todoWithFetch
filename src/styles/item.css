@@ -1,0 +1,43 @@
+.item-p {
+  font-size: 2em;
+  margin: 0;
+}
+
+.item {
+  /* caja */
+  width: 100%;
+  height: 3em;
+  border: none;
+  border-bottom: 1px solid lightgrey;
+  padding: 2em 2em;
+  /* posicion */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item-eliminar {
+  /* caja */
+  width: 1em;
+  height: 1em;
+  /* posicion */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 5%;
+  /* estilo */
+  color: red;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.item-eliminar--oculto {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.item:hover .item-eliminar--oculto {
+  pointer-events: all;
+  opacity: 1;
+}
