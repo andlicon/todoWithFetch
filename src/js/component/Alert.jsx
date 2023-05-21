@@ -5,7 +5,7 @@ import { Context } from '../store/appContext';
 const ERROR = false;
 const EXITO = true;
 
-const Alert = ({ mensaje, tipo }) => {
+const Alert = ({ message, type }) => {
   const [visible, setVisible] = useState(true);
   const { actions } = useContext(Context);
 
@@ -27,13 +27,13 @@ const Alert = ({ mensaje, tipo }) => {
       {
         visible &&
         <div
-          className={`alert ${tipo == ERROR
+          className={`alert ${type == ERROR
             ? 'alert--error'
             : 'alert--exito'}`}
           onClick={handlerOnClick}
         >
-          <p className='alert__mensaje'>
-            {mensaje}
+          <p className='alert__message'>
+            {message}
           </p>
         </div>
       }
