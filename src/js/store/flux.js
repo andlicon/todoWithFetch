@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      urlBase: 'http://assets.breatheco.de/apis/fake/todos/user/',
+      user: 'andreszabala',
       todos: [],
       alert: null
     },
