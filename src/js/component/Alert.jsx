@@ -11,7 +11,6 @@ const Alert = ({ message, type }) => {
 
   const handlerOnClick = () => {
     setVisible(false);
-    console.log(actions);
     actions.throwAlert();
   }
 
@@ -27,15 +26,15 @@ const Alert = ({ message, type }) => {
       {
         visible &&
         <div
-          className={`alert ${type == ERROR
-            ? 'alert--error'
-            : 'alert--exito'}`}
+          className='alert'
           onClick={handlerOnClick}
         >
-          <p className='alert__message'>
+          <p className={`alert__message ${type == ERROR
+            ? 'alert--error'
+            : 'alert--exito'}`}>
             {message}
           </p>
-        </div>
+        </div >
       }
     </>
   );

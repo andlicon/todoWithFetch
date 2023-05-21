@@ -1,21 +1,23 @@
 .alert {
     /* caja */
-    height: 1em;
-    border-radius: 8px;
-    padding: 1em;
+    width: 100%;
+    padding: 0;
+    margin: 0;
     /* posicion */
-    align-self: center;
     display: flex;
     justify-content: center;
-    align-items: center;
     position: absolute;
+    left: 0;
     bottom: 1em;
     /* estilo */
     color: white;
 }
 
 .alert__message {
+    /* box */
     margin: 0;
+    padding: 0.7em;
+    border-radius: 8px;
 }
 
 .alert--exito {
