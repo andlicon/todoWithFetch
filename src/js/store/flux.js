@@ -14,25 +14,29 @@ const getState = ({ getStore, getActions, setStore }) => {
       alert: null
     },
     actions: {
-      createTodo: async (url) => {
+      createTodo: async () => {
+        const url = getStore().urlBase + getStore().user;
+
         try {
-          let alertResponded = await createNewTodo(url);
-          console.log(`createTodo result: ${alertResponded.message}`);
+          await createNewTodo(url);
         }
         catch (error) {
           console.log(`create todo error: ${error}`);
         }
       },
-      getAllTodos: async (url) => {
+      getAllTodos: async () => {
+        const url = getStore().urlBase + getStore().user;
+
         try {
-          let [alertResponded, todos] = await getAll(url);
-          console.log(`get all todos result: ${alertResponded.message}`);
+          let [, todos] = await getAll(url);
           setStore({ ...getStore(), todos: todos });
         }
         catch (error) {
           console.log(`get all todos error: ${error}`);
         }
-
+      },
+      updateEntireList: (list) => {
+        console.log(list);
       },
       deleteTodo: () => {
         //delete a todo

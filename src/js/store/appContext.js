@@ -19,11 +19,9 @@ const injectContext = PassedComponent => {
     );
 
     useEffect(() => {
-      const url = state.store.urlBase + state.store.user;
-
       const initTodos = async () => {
-        await state.actions.createTodo(url);
-        state.actions.getAllTodos(url);
+        await state.actions.createTodo();
+        state.actions.getAllTodos();
       };
 
       initTodos();

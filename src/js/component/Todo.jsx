@@ -6,15 +6,16 @@ import Item from './Item.jsx';
 
 const Todo = () => {
   // hooks
-  const { store: { todos } } = useContext(Context);
-  const [adder, setAdder] = useState('');
+  const { store: { todos },
+    actions: { updateEntireList } } = useContext(Context);
+  const [newTask, setNewTask] = useState({ label: '', done: false });
 
   // Manejadores
-  const handlerChange = (event) => {
-    setAdder(event.target.value);
+  const handlerChange = ({ target: { value } }) => {
+    setNewTask({ label: value, done: false });
   }
   const handlerOnKey = ({ code }) => {
-    if (code == 'Enter') anadirItem();
+    if (code == 'Enter') updateEntireList([...todos, newTask]);
   }
 
   return (
@@ -27,10 +28,10 @@ const Todo = () => {
         <input
           type='text'
           className='todo__item todo__input'
-          id='adder'
-          name='adder'
+          id='newTask'
+          name='newTask'
           onChange={(handlerChange)}
-          value={adder}
+          value={newTask.label}
         />
       </div>
       {/* cuerpo del todo */}
