@@ -21,8 +21,8 @@ const injectContext = PassedComponent => {
     useEffect(() => {
       const url = state.store.urlBase + state.store.user;
 
-      state.actions.createTodo(url);
-      state.actions.getAllTodos(url);
+      state.actions.createTodo(url)
+        .then(state.actions.getAllTodos(url));
     }, []);
 
     return (

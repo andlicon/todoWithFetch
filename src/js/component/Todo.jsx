@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Context } from '../store/appContext';
 
 import '../../styles/todo.css';
 import Item from './Item.jsx';
 
 const Todo = () => {
   // hooks
+  const { store: { todos } } = useContext(Context);
   const [adder, setAdder] = useState('');
-  const [items, setItems] = useState([]);
 
   // Manejadores
   const handlerChange = (event) => {
@@ -14,38 +15,6 @@ const Todo = () => {
   }
   const handlerOnKey = ({ code }) => {
     if (code == 'Enter') anadirItem();
-  }
-  const handlerDelete = index => {
-    const arreglo = items.slice();
-    const newArray = arreglo.filter((element, i) => {
-      return index != i;
-    });
-
-    setItems(newArray);
-  }
-
-  const generarError = mensaje => {
-    setError(mensaje);
-
-    if (error == null) {
-      setTimeout(
-        () => { setError(null); }
-        , 3000);
-    }
-  };
-
-  const anadirItem = () => {
-    if (adder === '') {
-      generarError('No se puede cargar un item vacío');
-      return;
-    }
-    if (items.some(element => element == adder)) {
-      generarError('No se pueden duplicar las tareas');
-      return;
-    }
-
-    setItems([...items, adder]);
-    setAdder('');
   }
 
   return (
@@ -67,14 +36,12 @@ const Todo = () => {
       {/* cuerpo del todo */}
       <div className='todo__body content-center'>
         {
-          items.map((element, index) => {
+          todos.map((element, index) => {
             return (
               <Item
                 key={index}
-                task={element}
-                items={items}
-                setItems={setItems}
-                handler={handlerDelete}
+                task={element.label}
+                status={element.done}
                 index={index}
               />
             )
@@ -85,9 +52,9 @@ const Todo = () => {
       <div className='todo__status'>
         <p className='status'>
           {
-            items.length == 0
+            todos.length == 0
               ? 'No task, add a task'
-              : `${items.length} item left`
+              : `${todos.length} item left`
           }
         </p>
       </div>
