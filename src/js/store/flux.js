@@ -40,6 +40,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           let alertResponsed = await updateEntireList(url, list);
+
+          if (alertResponsed.type) setStore({ ...getStore(), todos: list });
+
           getActions().throwAlert(alertResponsed);
         }
         catch (error) {
@@ -51,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         //delete a todo
       },
       throwAlert: (alert) => {
-        setStore({ ...getStore, alert });
+        setStore({ ...getStore(), alert });
       }
     }
   };
