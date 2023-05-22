@@ -65,7 +65,39 @@ export const getAll = async (source) => {
 }
 
 export const updateEntireList = async (source, newList) => {
+  let alert = null;
+  let message = '';
+  let type = false;
 
+  try {
+    const response = await fetch(source, {
+      method: 'PUT',
+      body: JSON.stringify(newList),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await response.json();
+
+    if (response.ok) {
+      message = 'New task added.';
+      type = true;
+    }
+    if (!response.ok) message = data.msg;
+
+    type = response.ok;
+  }
+  catch (error) {
+    message = error.message;
+  }
+  finally {
+    alert = {
+      message,
+      type
+    }
+  }
+
+  return alert;
 }
 
 export const deleteItems = async (source) => {

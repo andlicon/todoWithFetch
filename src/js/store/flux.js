@@ -35,14 +35,23 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log(`get all todos error: ${error}`);
         }
       },
-      updateEntireList: (list) => {
-        console.log(list);
+      updateEntireList: async (list) => {
+        const url = getStore().urlBase + getStore().user;
+
+        try {
+          let alertResponsed = await updateEntireList(url, list);
+          getActions().throwAlert(alertResponsed);
+        }
+        catch (error) {
+          getActions().throwAlert({ message: error.message, type: false });
+        }
+
       },
       deleteTodo: () => {
         //delete a todo
       },
-      throwAlert: () => {
-        //throw an alert
+      throwAlert: (alert) => {
+        setStore({ ...getStore, alert });
       }
     }
   };
