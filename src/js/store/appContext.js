@@ -19,8 +19,8 @@ const injectContext = PassedComponent => {
     );
 
     useEffect(() => {
-      //Hacer consulta de las tareas cargadas en la bd
-      //O crear la bd
+      const url = state.store.urlBase + state.store.user;
+      state.actions.createTodo(url);
     }, []);
 
     return (
