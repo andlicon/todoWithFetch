@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../store/appContext';
 
 import '../../styles/item.css'
 
-const Item = ({ index, task, handler }) => {
+const Item = ({ task, done }) => {
+  // hooks
+  const { actions: { updateEntireList },
+    store: { todos } } = useContext(Context);
+
+  // handlers
+  const handlerOnClick = () => {
+    const listWithoutThisItem = todos.filter((element) => {
+      return (element.label != task && element.done != done)
+    });
+
+    updateEntireList(listWithoutThisItem, 'item deleted successful');
+  };
 
   return (
     <div className='item'>
@@ -11,7 +24,7 @@ const Item = ({ index, task, handler }) => {
       </p>
       <span
         className='item-eliminar item-eliminar--oculto '
-        onClick={() => handler(index)}
+        onClick={handlerOnClick}
       >
         <i className="bi bi-x-lg"></i>
       </span>

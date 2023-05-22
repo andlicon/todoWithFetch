@@ -64,7 +64,7 @@ export const getAll = async (source) => {
   return [alert, results];
 }
 
-export const updateEntireList = async (source, newList) => {
+export const updateEntireList = async (source, newList, successMessage) => {
   let alert = null;
   let message = '';
   let type = false;
@@ -80,7 +80,7 @@ export const updateEntireList = async (source, newList) => {
     const data = await response.json();
 
     if (response.ok) {
-      message = 'New task added.';
+      message = successMessage;
       type = true;
     }
     if (!response.ok) message = data.msg;

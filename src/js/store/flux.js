@@ -35,11 +35,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log(`get all todos error: ${error}`);
         }
       },
-      updateEntireList: async (list) => {
+      updateEntireList: async (list, successMessage) => {
         const url = getStore().urlBase + getStore().user;
 
         try {
-          let alertResponsed = await updateEntireList(url, list);
+          let alertResponsed = await updateEntireList(url, list, successMessage);
 
           if (alertResponsed.type) setStore({ ...getStore(), todos: list });
 

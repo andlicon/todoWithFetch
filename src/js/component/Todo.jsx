@@ -15,7 +15,10 @@ const Todo = () => {
     setNewTask({ label: value, done: false });
   }
   const handlerOnKey = ({ code }) => {
-    if (code == 'Enter') updateEntireList([...todos, newTask]);
+    if (code == 'Enter') {
+      updateEntireList([...todos, newTask], 'item added successful');
+      setNewTask({ ...newTask, label: '' });
+    }
   }
 
   return (
